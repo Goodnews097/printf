@@ -6,17 +6,17 @@
  *
  * Return: Precision.
  */
-int get_size(const char *format, int *i)
+int get_size(const char *format, int *VD)
 {
-int curr_i = *i + 1;
+int curr_VD = *VD + 1;
 int size = 0;
-if (format[curr_i] == 'l')
+if (format[curr_VD] == 'l')
 size = S_LONG;
-else if (format[curr_i] == 'h')
+else if (format[curr_VD] == 'h')
 size = S_SHORT;
 if (size == 0)
-*i = curr_i - 1;
+*VD = curr_VD - 1;
 else
-*i = curr_i;
+*VD = curr_VD;
 return (size);
 }
