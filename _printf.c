@@ -3,13 +3,13 @@
 void print_buffer(char buffer[], int *buff_ind);
 
 /**
- * _printf - Printf function _printf - Printf function_printf - Printf function_printf - Printf function_printf - Printf function
- * @format: format._printf - Printf function_printf - Printf function_printf - Printf function_printf - Printf function
- * Return: Printed chars._printf - Printf function_printf - Printf function_printf - Printf function
+ * _printf - Printf function print_buffer - Prints the contents of the buffer if it exist
+ * @format: format. print_buffer - Prints the contents of the buffer if it exist print_buffer - Prints the contents of the buffer if it exist
+ * Return: Printed chars.print_buffer - Prints the contents of the buffer if it exist print_buffer - Prints the contents of the buffer if it exist
  */
 int _printf(const char *format, ...)
 {
-	int oppy, printed = 0, printed_chars = 0;
+	int i, printed = 0, printed_chars = 0;
 	int flags, width, precision, size, buff_ind = 0;
 	va_list list;
 	char buffer[BUFF_SIZE];
@@ -19,25 +19,25 @@ int _printf(const char *format, ...)
 
 	va_start(list, format);
 
-	for (oppy = 0; format && format[oppy] != '\0'; oppy++)
+	for (i = 0; format && format[i] != '\0'; i++)
 	{
-		if (format[oppy] != '%')
+		if (format[i] != '%')
 		{
-			buffer[buff_ind++] = format[oppy];
+			buffer[buff_ind++] = format[i];
 			if (buff_ind == BUFF_SIZE)
 				print_buffer(buffer, &buff_ind);
-			/* write(1, &format[oppy], 1);*/
+			/* write(1, &format[i], 1);*/
 			printed_chars++;
 		}
 		else
 		{
 			print_buffer(buffer, &buff_ind);
-			flags = get_flags(format, &oppy);
-			width = get_width(format, &oppy, list);
-			precision = get_precision(format, &oppy, list);
-			size = get_size(format, &oppy);
-			++oppy;
-			printed = handle_print(format, &oppy, list, buffer,
+			flags = get_flags(format, &i);
+			width = get_width(format, &i, list);
+			precision = get_precision(format, &i, list);
+			size = get_size(format, &i);
+			++i;
+			printed = handle_print(format, &i, list, buffer,
 				flags, width, precision, size);
 			if (printed == -1)
 				return (-1);
@@ -53,9 +53,9 @@ int _printf(const char *format, ...)
 }
 
 /**
- * print_buffer - Prints the contents of the buffer if it Prints the contents of the buffer if it Prints the contents of the buffer if it exist
- * @buffer: Array of Prints the contents of the buffer if itPrints the contents of the buffer if it  chars
- * @buff_ind: Index Prints the contents of the buffer if itPrints the contents of the buffer if it at which to add next char, represents the length.
+ * print_buffer - Prints the contents of the buffer if it exist print_buffer - Prints the contents of the buffer if it exist
+ * @buffer: Array of chars print_buffer - Prints the contents of the buffer if it exist print_buffer - Prints the contents of the buffer if it exist
+ * @buff_ind: Index at which to add next char, represents the length. print_buffer - Prints the contents of the buffer if it exist
  */
 void print_buffer(char buffer[], int *buff_ind)
 {

@@ -1,37 +1,34 @@
 #include "main.h"
+
 /**
- * get_flags - Calculates active flags
- * @format: Formatted string in which to print the arguments
- * @i: take a parameter.  get_flags - Calculates active flags
- * @format: Formatted string in which to print the arguments
- * @i: take a parameter. get_flags - Calculates active flags
- * @format: Formatted string in which to print the arguments
- * @i: take a parameter. get_flags - Calculates active flags
- * @format: Formatted string in which to print the arguments
- * @i: take a parameter. get_flags - Calculates active flags
- * @format: Formatted string in which to print the arguments
- * @i: take a parameter.
- * Return: Flags:
+ * lculates active flags
+ * to print the arguments
+ *  parameter.
+ * Flags:
  */
-int get_flags(const char *format, int *JD)
+int get_flags(const char *format, int *i)
 {
-/* - + 0 # ' ' */
-/* 1 2 4 8  16 */
-int jf, curr_JD;
-int flags = 0;
-const char FLAGS_CH[] = {'-', '+', '0', '#', ' ', '\0'};
-const int FLAGS_ARR[] = {F_MINUS, F_PLUS, F_ZERO, F_HASH, F_SPACE, 0};
-for (curr_JD = *JD + 1; format[curr_JD] != '\0'; curr_JD++)
-{
-for (jf = 0; FLAGS_CH[jf] != '\0'; jf++)
-if (format[curr_JD] == FLAGS_CH[jf])
-{
-flags |= FLAGS_ARR[jf];
-break;
-}
-if (FLAGS_CH[jf] == 0)
-break;
-}
-*JD = curr_JD - 1;
-return (flags);
+	/* - + 0 # ' ' */
+	/* 1 2 4 8  16 */
+	int j, curr_i;
+	int flags = 0;
+	const char FLAGS_CH[] = {'-', '+', '0', '#', ' ', '\0'};
+	const int FLAGS_ARR[] = {F_MINUS, F_PLUS, F_ZERO, F_HASH, F_SPACE, 0};
+
+	for (curr_i = *i + 1; format[curr_i] != '\0'; curr_i++)
+	{
+		for (j = 0; FLAGS_CH[j] != '\0'; j++)
+			if (format[curr_i] == FLAGS_CH[j])
+			{
+				flags |= FLAGS_ARR[j];
+				break;
+			}
+
+		if (FLAGS_CH[j] == 0)
+			break;
+	}
+
+	*i = curr_i - 1;
+
+	return (flags);
 }
